@@ -1,4 +1,5 @@
 #include "graph.hpp"
+#include <vector>
 
 template <typename ItemType>
 // default constructor
@@ -86,6 +87,14 @@ bool Graph<ItemType>::remove(ItemType start, ItemType end)
 template <typename ItemType>
 void Graph<ItemType>::depthFirstTraversal(ItemType start, void visit(ItemType &))
 {
+  // exception: if graph is empty
+
+  std::vector<ItemType> visited; // stores visited nodes
+  
+  // start at a certain node and find and store its neighbors
+
+
+
   // BONUS TODO, you may need a stack and/or a recursive helper function
 }
 
