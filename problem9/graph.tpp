@@ -18,7 +18,7 @@ int Graph<ItemType>::getNumEdges() const
 {
   int edge_count = 0;
   for (auto i = adjacency_list.begin(); i != adjacency_list.end(); i++) {
-    edge_count += i->second.size();
+    edge_count += i->second.size(); // second.size contains the number of neighbors to the node or in other words how many edges it makes
   }
   return edge_count / 2; // since the function above counts double, divide result by 2
 }
