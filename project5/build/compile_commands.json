@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/test-solver.dir/test_solver.cpp.o -c /home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/test_solver.cpp",
+  "file": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/test_solver.cpp",
+  "output": "CMakeFiles/test-solver.dir/test_solver.cpp.o"
+},
+{
+  "directory": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/test-solver.dir/puzzle.cpp.o -c /home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/puzzle.cpp",
+  "file": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/puzzle.cpp",
+  "output": "CMakeFiles/test-solver.dir/puzzle.cpp.o"
+},
+{
+  "directory": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/test-solver.dir/puzzle_solver.cpp.o -c /home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/puzzle_solver.cpp",
+  "file": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/puzzle_solver.cpp",
+  "output": "CMakeFiles/test-solver.dir/puzzle_solver.cpp.o"
+},
+{
+  "directory": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/test-solver.dir/lib/image.cpp.o -c /home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/lib/image.cpp",
+  "file": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/lib/image.cpp",
+  "output": "CMakeFiles/test-solver.dir/lib/image.cpp.o"
+},
+{
+  "directory": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/test-solver.dir/lib/lodepng.cpp.o -c /home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/lib/lodepng.cpp",
+  "file": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/lib/lodepng.cpp",
+  "output": "CMakeFiles/test-solver.dir/lib/lodepng.cpp.o"
+},
+{
+  "directory": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/test-solver.dir/lib/gif.cpp.o -c /home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/lib/gif.cpp",
+  "file": "/home/efletchlives/VsCode/ECE302/ECE302_EHF/project5/lib/gif.cpp",
+  "output": "CMakeFiles/test-solver.dir/lib/gif.cpp.o"
+}
+]

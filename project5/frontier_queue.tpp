@@ -19,7 +19,7 @@ void frontier_queue<T>::push(const T &p, std::size_t cost, std::size_t heur)
 template <typename T>
 bool frontier_queue<T>::empty()
 {
-  return queue.empty(); // use built-in vector function
+  return queue.empty(); // using built-in vector function
 }
 
 template <typename T>
@@ -28,7 +28,7 @@ bool frontier_queue<T>::contains(const T &p)
   int i = 0;
 
   while(true) {
-    if (queue[i]. == p) {
+    if (queue[i].getValue() == p) {
       break;
     }
     else {

@@ -57,7 +57,9 @@ TEST_CASE("Simple replaceif test", "[frontier_queue]")
   REQUIRE(state.getFCost() == 101);
 }
 
-/* Puzzle solver tests start here*/
+
+
+/*/////////////////// Puzzle solver tests start here \\\\\\\\\\\\\\\\\\\\\ */
 TEST_CASE("Test-0", "[PuzzleSolver]")
 {
 
