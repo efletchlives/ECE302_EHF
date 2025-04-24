@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/cmake/1457/bin/cmake
+CMAKE_COMMAND = /snap/cmake/1461/bin/cmake
 
 # The command to remove a file.
-RM = /snap/cmake/1457/bin/cmake -E rm -f
+RM = /snap/cmake/1461/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -67,7 +67,7 @@ include CMakeFiles/starter_download.dir/compiler_depend.make
 include CMakeFiles/starter_download.dir/progress.make
 
 CMakeFiles/starter_download:
-	cd /home/efletchlives/VsCode/ECE302/ECE302_EHF/problem7 && /snap/cmake/1457/bin/cmake -E tar cfv /home/efletchlives/VsCode/ECE302/ECE302_EHF/problem7/build/../problem7_starter.zip --format=zip test_bst.cpp binary_search_tree.hpp binary_search_tree.tpp CMakeLists.txt catch.hpp
+	cd /home/efletchlives/VsCode/ECE302/ECE302_EHF/problem7 && /snap/cmake/1461/bin/cmake -E tar cfv /home/efletchlives/VsCode/ECE302/ECE302_EHF/problem7/build/../problem7_starter.zip --format=zip test_bst.cpp binary_search_tree.hpp binary_search_tree.tpp CMakeLists.txt catch.hpp
 
 CMakeFiles/starter_download.dir/codegen:
 .PHONY : CMakeFiles/starter_download.dir/codegen

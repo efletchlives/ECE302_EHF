@@ -5,6 +5,7 @@
 #include "puzzle_solver.hpp"
 
 /* frontier_queue tests start here*/
+// passed
 TEST_CASE("Simple push test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
@@ -12,10 +13,11 @@ TEST_CASE("Simple push test", "[frontier_queue]")
 
   fq.push(1, 0, 1);
 
-  REQUIRE_FALSE(fq.empty());
+  REQUIRE_FALSE(fq.empty()); // fails here bc push not implemented
   REQUIRE(fq.contains(1));
 }
 
+// passed
 TEST_CASE("Simple contains test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
@@ -27,10 +29,11 @@ TEST_CASE("Simple contains test", "[frontier_queue]")
   fq.push(2, 2, 2);
 
   REQUIRE(fq.contains(1));
-  REQUIRE(fq.contains(2));
+  REQUIRE(fq.contains(2)); // fails here, contains must not be working correctly
   REQUIRE_FALSE(fq.contains(3));
 }
 
+// fails
 TEST_CASE("Simple pop test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
@@ -44,6 +47,7 @@ TEST_CASE("Simple pop test", "[frontier_queue]")
   REQUIRE(fq.empty());
 }
 
+// fails
 TEST_CASE("Simple replaceif test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
