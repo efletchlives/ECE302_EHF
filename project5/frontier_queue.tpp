@@ -4,17 +4,37 @@
 template <typename T>
 State<T> frontier_queue<T>::pop()
 {
-  // int i = 0;
-  // State<T> lowest_state(-1,-1,-1);
-  // while (queue.size() != i) {
-  //   if (queue[i].getFCost() < queue[i-1].getFCost()) {
-  //     lowest_state = queue[i]; // remove state with lowest f-cost
-  //   }
-  //   i++;
-  // }
+  State<T> removed_state = queue.front(); // store removed state to return later
+  queue[0] = queue.back(); // replace root with last element
+  queue.pop_back(); // remove root and shrink heap
+
+  // heapify down
+  int i = 0;
+  int left, right; // children
   
-  // return lowest_state;
-  return State<T>(T(),0,0);
+  while((i*2 + 1) < queue.size()) { // loop while a child is still possible
+    int pos = i; // store possible new position of current
+    left = i*2 + 1; // left child of position i is stored at (i*2) + 1
+    right = i*2 + 2; // right child of position i is stored at (i*2) + 2
+    int smaller = left; 
+    // find smaller child
+    if (queue[left].getFCost() > queue[right].getFCost()) {
+      smaller = right;
+    }
+    else {
+      smaller = left;
+    }
+
+    // compare current with smaller child
+    if(queue[pos].getFCost() > queue[smaller].getFCost()) { // if current > smaller child, swap
+      std::swap(queue[i], queue[smaller]);
+      i = smaller;
+    }
+    else {
+      break;
+    }
+  }
+  return removed_state;
 }
 
 template <typename T>
@@ -64,5 +84,16 @@ template <typename T>
 void frontier_queue<T>::replaceif(const T &p, std::size_t cost)
 {
 
+  for (int i = 0; i < queue.size(); i++) {
+    if(queue[i].getValue() == p) {
+
+      if(cost < queue[i].getFCost()) { // if the path cost is lower
+        queue[i].updatePathCost(cost); // change path cost to more optimized path
+        std::size_t og_cost = queue[i].getFCost();
+        queue.erase(queue.begin() + i); // remove original state
+        push(p, cost, og_cost-cost); // push the new state to the queue
+      }
+    }
+  }
   // TODO
 }
