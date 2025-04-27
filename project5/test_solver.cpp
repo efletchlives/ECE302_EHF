@@ -5,7 +5,6 @@
 #include "puzzle_solver.hpp"
 
 /* frontier_queue tests start here*/
-// passed
 TEST_CASE("Simple push test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
@@ -17,7 +16,7 @@ TEST_CASE("Simple push test", "[frontier_queue]")
   REQUIRE(fq.contains(1));
 }
 
-// passed
+
 TEST_CASE("Simple contains test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
@@ -33,7 +32,7 @@ TEST_CASE("Simple contains test", "[frontier_queue]")
   REQUIRE_FALSE(fq.contains(3));
 }
 
-// fails
+
 TEST_CASE("Simple pop test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
@@ -47,7 +46,7 @@ TEST_CASE("Simple pop test", "[frontier_queue]")
   REQUIRE(fq.empty());
 }
 
-// fails
+
 TEST_CASE("Simple replaceif test", "[frontier_queue]")
 {
   frontier_queue<int> fq;
@@ -60,7 +59,7 @@ TEST_CASE("Simple replaceif test", "[frontier_queue]")
   REQUIRE(state.getPathCost() == 1);
   REQUIRE(state.getFCost() == 101);
 }
-
+// passed above
 
 
 /*/////////////////// Puzzle solver tests start here \\\\\\\\\\\\\\\\\\\\\ */

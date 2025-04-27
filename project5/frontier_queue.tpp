@@ -5,35 +5,14 @@ template <typename T>
 State<T> frontier_queue<T>::pop()
 {
   State<T> removed_state = queue.front(); // store removed state to return later
-  queue[0] = queue.back(); // replace root with last element
+  queue.at(0) = queue.back(); // replace root with last element
   queue.pop_back(); // remove root and shrink heap
 
   // heapify down
-  int i = 0;
-  int left, right; // children
-  
-  while((i*2 + 1) < queue.size()) { // loop while a child is still possible
-    int pos = i; // store possible new position of current
-    left = i*2 + 1; // left child of position i is stored at (i*2) + 1
-    right = i*2 + 2; // right child of position i is stored at (i*2) + 2
-    int smaller = left; 
-    // find smaller child
-    if (queue[left].getFCost() > queue[right].getFCost()) {
-      smaller = right;
-    }
-    else {
-      smaller = left;
-    }
-
-    // compare current with smaller child
-    if(queue[pos].getFCost() > queue[smaller].getFCost()) { // if current > smaller child, swap
-      std::swap(queue[i], queue[smaller]);
-      i = smaller;
-    }
-    else {
-      break;
-    }
+  if(!queue.empty()) {
+    heapRebuild(0);
   }
+
   return removed_state;
 }
 
@@ -48,11 +27,12 @@ void frontier_queue<T>::push(const T &p, std::size_t cost, std::size_t heur)
     // similar to min heap implementation
     int parent = (i-1)/2; // parent is located at (location of current - 1)/2
 
-    if(queue[i].getFCost() < queue[parent].getFCost()) { // put higher in the queue if f value is lower
-      std::swap(queue[i], queue[parent]); // swap the current with the parent
+    if(queue.at(i).getFCost() < queue.at(parent).getFCost()) { // put higher in the queue if f value is lower
+      std::swap(queue.at(i), queue.at(parent)); // swap the current with the parent
+      i = parent; // move the index up the heap
     }
     else { 
-      break;
+      break; // makes complexity O(log n)
     }
   }
 }
@@ -72,28 +52,68 @@ bool frontier_queue<T>::contains(const T &p)
   }
 
   for(int i = 0; i < queue.size(); i++) {
-    if(queue[i].getValue() == p) {
+    if(queue.at(i).getValue() == p) {
       return true; // queue contains the item
     }
   }
 
-  return false; // queue are not contains the item
+  return false; // queue does not contain the item
 }
 
 template <typename T>
 void frontier_queue<T>::replaceif(const T &p, std::size_t cost)
 {
-
-  for (int i = 0; i < queue.size(); i++) {
-    if(queue[i].getValue() == p) {
-
-      if(cost < queue[i].getFCost()) { // if the path cost is lower
-        queue[i].updatePathCost(cost); // change path cost to more optimized path
-        std::size_t og_cost = queue[i].getFCost();
-        queue.erase(queue.begin() + i); // remove original state
-        push(p, cost, og_cost-cost); // push the new state to the queue
-      }
+  int index = -1;
+  for(int i = 0; i < queue.size(); i++) {
+    if(queue.at(i).getValue() == p) {
+      index = i;
+      break;
     }
   }
-  // TODO
+
+  // exception: replacement is not possible
+  if(index == -1) {
+    return;
+  }
+
+  if(cost < queue.at(index).getPathCost()) { // if the path cost is lower
+    queue.at(index).updatePathCost(cost); // change path cost to more optimized path
+
+    int child = index;
+    while(child > 0) {
+      int parent = (child-1)/2;
+      if(queue.at(child).getFCost() < queue.at(parent).getFCost()) {
+        std::swap(queue.at(child), queue.at(parent)); // swap child and parent
+        child = parent; // bubble up
+      }
+      else {
+        break;
+      }
+    }
+  }     
+    
 }
+
+
+// heap rebuild and helper functions
+template <typename T>
+void frontier_queue<T>::heapRebuild(const int index)
+{
+  int left_child = 2 * index + 1;
+  int right_child = 2 * index + 2;
+  int smallest = index;
+
+  if (left_child < queue.size() && queue[left_child].getFCost() < queue[smallest].getFCost()) {
+    smallest = left_child;
+  }
+
+  if (right_child < queue.size() && queue[right_child].getFCost() < queue[smallest].getFCost()) {
+    smallest = right_child;
+  }
+
+  if (smallest != index) {
+    std::swap(queue[index], queue[smallest]);
+    heapRebuild(smallest); // heapify down
+  }
+} // end heapRebuild
+

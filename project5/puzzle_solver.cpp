@@ -30,6 +30,19 @@ std::pair<bool, std::size_t> PuzzleSolver::search()
   std::size_t solution_cost;
   frontier_queue<Puzzle> frontier;
   // TODO: instantiate explored
+  std::unordered_set<Puzzle> explored; // use unordered set to store the explored puzzle states
+  explored.clear(); // initialize the set by clearing
+
+  // gif visualize initialization, following DemoVisualize()
+  // GifWriter gif;
+  // int frame_duration = 100;
+
+  // Image<Pixel> image = initial.toPicture();
+  // uint32_t width = image.width();
+  // uint32_t height = image.height();
+  // GifBegin(&gif, "puzzle_solver_output.gif", width, height, frame_duration, 8, true);
+  // addFrameToGif(gif, initial, frame_duration); // add the starting puzzle state
+  // end initialization
 
   frontier.push(initial, 0, initial.heuristic(goal));
 
@@ -47,8 +60,10 @@ std::pair<bool, std::size_t> PuzzleSolver::search()
     std::size_t cost = node.getPathCost();
 
     // TODO: add state to explored
+    explored.insert(value);
 
     // TODO: visualize the solving process, check DemoVisualize()
+    //addFrameToGif(gif, value, frame_duration);
 
     if (value.heuristic(goal) == 0)
     {
@@ -67,8 +82,9 @@ std::pair<bool, std::size_t> PuzzleSolver::search()
       {
         // TODO: define in_explored as whether the result has been explored
 
-        bool in_explored = false;
+        bool in_explored = explored.count(result) > 0; // false if element is not explored, true if explored
         bool in_frontier = frontier.contains(result);
+
         if (!(in_explored || in_frontier))
         {
           frontier.push(result, cost + 1, result.heuristic(goal));

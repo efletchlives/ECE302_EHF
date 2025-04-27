@@ -34,6 +34,8 @@ public:
    */
   void replaceif(const T &p, std::size_t cost);
 
+  void heapRebuild(const int index);
+
 private:
   std::vector<State<T>> queue;
 };
