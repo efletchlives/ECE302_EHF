@@ -38,8 +38,8 @@ std::pair<bool, std::size_t> PuzzleSolver::search()
   // int frame_duration = 100;
 
   // Image<Pixel> image = initial.toPicture();
-  // uint32_t width = image.width();
-  // uint32_t height = image.height();
+  // uint32_t width = image.height();
+  // uint32_t height = image.width();
   // GifBegin(&gif, "puzzle_solver_output.gif", width, height, frame_duration, 8, true);
   // addFrameToGif(gif, initial, frame_duration); // add the starting puzzle state
   // end initialization

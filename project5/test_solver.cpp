@@ -197,3 +197,58 @@ TEST_CASE("Solver: Test-5", "[PuzzleSolver]")
 }
 
 /* Write your own unit test*/
+
+TEST_CASE("my own puzzle1") {
+  Puzzle puzzle1, puzzle2;
+  REQUIRE(puzzle1.fromString("012345678"));
+  REQUIRE(puzzle2.fromString("012345867"));
+
+  {
+    PuzzleSolver solver(puzzle1, puzzle2);
+    solver.DemoVisualize();
+    bool found;
+    std::size_t solution_cost;
+    std::tie(found, solution_cost) = solver.search();
+
+    REQUIRE(found);
+    REQUIRE(solution_cost == 2);
+  }
+
+  {
+    PuzzleSolver solver(puzzle2, puzzle1);
+    bool found;
+    std::size_t solution_cost;
+    std::tie(found, solution_cost) = solver.search();
+
+    REQUIRE(found);
+    REQUIRE(solution_cost == 2);
+  }
+}
+
+TEST_CASE("my own puzzle2") {
+  Puzzle puzzle1, puzzle2;
+  REQUIRE(puzzle1.fromString("125348607"));
+  REQUIRE(puzzle2.fromString("012345678"));
+
+  {
+    PuzzleSolver solver(puzzle1, puzzle2);
+    solver.DemoVisualize();
+    bool found;
+    std::size_t solution_cost;
+    std::tie(found, solution_cost) = solver.search();
+
+    REQUIRE(found);
+    REQUIRE(solution_cost == 13);
+  }
+
+  {
+    PuzzleSolver solver(puzzle2, puzzle1);
+    bool found;
+    std::size_t solution_cost;
+    std::tie(found, solution_cost) = solver.search();
+
+    REQUIRE(found);
+    REQUIRE(solution_cost == 13);
+  }
+}
+
